@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+	<title>CRUD_HTML</title>
+	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+	<div class="container">
+	<table class="table table-striped">
+			  <thead class="thead-dark">
+				<tr>
+				<th>#</th>
+				<th>NOMBRE</th>
+				<th>PATERNO</th>
+				<th>MATERNO</th>
+				<th>E-MAIL</th>
+				<th>OPCIONES</th>
+				</tr>
+			</thead>
+		<tbody>
+			<tr>
+				<td><input class="form-control" type="text" name="id" readonly="true"></td>
+				<td><input class="form-control" type="text" placeholder="NOMBRE" name="nombre"></td>
+				<td><input class="form-control" type="text" placeholder="PATERNO" name="paterno"></td>
+				<td><input class="form-control" type="text" placeholder="MATERNO" name="materno"></td>
+				<td><input class="form-control" type="E-MAIL" placeholder="E-MAIL" name="correo"></td>
+				<td><button class="btn btn-success">Agregar</button></td>
+			</tr>
+			<tr>
+				<td>1</td>
+				<td>Oscar</td>
+				<td>Hernandez</td>
+				<td>Bello</td>
+				<td>o@gmail.com</td>
+				<td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modificarModal" data-whatever="@mdo">Modificar</button>
+				<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalEliminar" data-whatever="@mdo">Eliminar</button></td>
+			</tr>
+			<tr>
+				<td>2</td>
+				<td>Oscar</td>
+				<td>Hernandez</td>
+				<td>Bello</td>
+				<td>o@gmail.com</td>
+				<td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modificarModal" data-whatever="@mdo">Modificar</button>
+				<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalEliminar" data-whatever="@mdo">Eliminar</button></td>
+			</tr>
+			<tr>
+				<td>3</td>
+				<td>Oscar</td>
+				<td>Hernandez</td>
+				<td>Bello</td>
+				<td>o@gmail.com</td>
+				<td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modificarModal" data-whatever="@mdo">Modificar</button>
+				<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalEliminar" data-whatever="@mdo">Eliminar</button></td>
+			</tr>
+			<tr>
+				<td>4</td>
+				<td>Oscar</td>
+				<td>Hernandez</td>
+				<td>Bello</td>
+				<td>o@gmail.com</td>
+				<td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modificarModal" data-whatever="@mdo">Modificar</button>
+				<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalEliminar" data-whatever="@mdo">Eliminar</button></td>
+			</tr>
+			<tr>
+				<td>5</td>
+				<td>Oscar</td>
+				<td>Hernandez</td>
+				<td>Bello</td>
+				<td>o@gmail.com</td>
+				<td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modificarModal" data-whatever="@mdo">Modificar</button>
+				<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalEliminar" data-whatever="@mdo">Eliminar</button></td>
+			</tr>
+		</tbody>
+	</table>
+
+
+<!--MODAL MODIFICAR-->
+
+<div class="modal fade" id="modificarModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">MODIFICAR</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Nombre:</label>
+            <input type="text" class="form-control" id="recipient-name">
+          </div>
+          <div class="form-group">
+            <label for="message-text" class="col-form-label">Paterno:</label>
+            <textarea class="form-control" id="message-text"></textarea>
+          </div>
+           <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Materno:</label>
+            <input type="text" class="form-control" id="recipient-name">
+          </div>
+          <div class="form-group">
+            <label for="message-text" class="col-form-label">E-Mail:</label>
+            <textarea class="form-control" id="message-text"></textarea>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-primary">Guardar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--MODAL ELIMINAR-->
+<div class="modal fade" id="modalEliminar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Eliminar</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+       Esta seguro que quiere Eliminar a este Usuario
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-primary">Aceptar</button>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+
+<script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+	
+	
+
+
+</body>
+</html>
