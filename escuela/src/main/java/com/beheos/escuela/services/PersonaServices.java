@@ -1,10 +1,16 @@
 package com.beheos.escuela.services;
 
-import com.beheos.escuela.modelo.Persona;
+import java.util.List;
+import com.beheos.escuela.modelo.PersonaModelo;
 
 public interface PersonaServices {
 	
-	   public abstract void agregar(Persona persona);
-
+	
+	List<PersonaModelo> listaPersona();
+	void agregarPersona(PersonaModelo persona);
+	void eliminarPersona(Integer idPersona);
+	PersonaModelo buscarPersona(Integer idPersona);
+	
+	
 
 }

@@ -1,6 +1,8 @@
 <!DOCTYPE html>
-<html xmlns:th=http://www.thymeleaf.org>
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:th="http://www.thymeleaf.org">
 <head>
+<spring:url value="/resources" var="urlPublica"></spring:url>
 <meta charset="utf-8">
 <title>Insert title here</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
@@ -11,70 +13,65 @@
 			  <thead class="thead-dark">
 				<tr>
 				<th>#</th>
+				<th>TIPO PERSONA</th>
 				<th>NOMBRE</th>
 				<th>PATERNO</th>
 				<th>MATERNO</th>
 				<th>E-MAIL</th>
+				<th>CEDULA</th>
+				<th>MATRICULA</th>
 				<th>OPCIONES</th>
 				</tr>
 			</thead>
 		<tbody>
 			<tr>
-				<td><input class="form-control" type="text" name="id" readonly="true"></td>
+			<form th:action="@{/guardarPersona}" method="post" th:object="${persona}">
+				<td><input class="form-control" type="text" readonly="true"></td>
+				<td><select class="form-control">
+				<option value=1>Alumno</option>
+				<option value=2>Maestro</option>
+				</select></td>
 				<td><input class="form-control" type="text" placeholder="NOMBRE" name="nombre"></td>
 				<td><input class="form-control" type="text" placeholder="PATERNO" name="paterno"></td>
 				<td><input class="form-control" type="text" placeholder="MATERNO" name="materno"></td>
-				<td><input class="form-control" type="E-MAIL" placeholder="E-MAIL" name="correo"></td>
-				<td><button class="btn btn-success">Agregar</button></td>
+				<td><input class="form-control" type="mail" placeholder="E-MAIL" name="correo"></td>
+				<td><input class="form-control" type="text" placeholder="CEDULA" name="correo"></td>
+				<td><input class="form-control" type="text" placeholder="MATRICULA" name="correo"></td>
+				<td>
+				<button type="submit" class="btn btn-success" title="Agregar">
+				<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-plus-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+  				<path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>
+				</svg>
+				</button>
+				</td>
+			</form>
 			</tr>
-			<tr>
-				<td>1</td>
-				<td>Oscar</td>
-				<td>Hernandez</td>
-				<td>Bello</td>
-				<td>o@gmail.com</td>
-				<td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modificarModal" data-whatever="@mdo">Modificar</button>
-				<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalEliminar" data-whatever="@mdo">Eliminar</button></td>
-			</tr>
-			<tr>
-				<td>2</td>
-				<td>Oscar</td>
-				<td>Hernandez</td>
-				<td>Bello</td>
-				<td>o@gmail.com</td>
-				<td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modificarModal" data-whatever="@mdo">Modificar</button>
-				<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalEliminar" data-whatever="@mdo">Eliminar</button></td>
-			</tr>
-			<tr>
-				<td>3</td>
-				<td>Oscar</td>
-				<td>Hernandez</td>
-				<td>Bello</td>
-				<td>o@gmail.com</td>
-				<td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modificarModal" data-whatever="@mdo">Modificar</button>
-				<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalEliminar" data-whatever="@mdo">Eliminar</button></td>
-			</tr>
-			<tr>
-				<td>4</td>
-				<td>Oscar</td>
-				<td>Hernandez</td>
-				<td>Bello</td>
-				<td>o@gmail.com</td>
-				<td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modificarModal" data-whatever="@mdo">Modificar</button>
-				<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalEliminar" data-whatever="@mdo">Eliminar</button></td>
-			</tr>
-			<tr>
-				<td>5</td>
-				<td>Oscar</td>
-				<td>Hernandez</td>
-				<td>Bello</td>
-				<td>o@gmail.com</td>
-				<td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modificarModal" data-whatever="@mdo">Modificar</button>
-				<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalEliminar" data-whatever="@mdo">Eliminar</button></td>
+			
+			<tr th:each="p : ${personas}">
+				<td th:text="${p.id}"></td>
+				<td th:text="${p.fnidpersona}"></td>
+				<td th:text="${p.nombre}"></td>
+				<td th:text="${p.paterno}"></td>
+				<td th:text="${p.materno}"></td>
+				<td th:text="${p.correo}"></td>
+				<td th:text="${p.cedula}"></td>
+				<td th:text="${p.matricula}"></td>
+				<td>
+				<a href="#modificarModal" class="btn btn-primary" data-toggle="modal" title="Modificar">
+				<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-pencil" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+  				<path fill-rule="evenodd" d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5L13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175l-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
+				</svg>
+				</a>
+				<a href="#modalEliminar" class="btn btn-danger" data-toggle="modal" title="Eliminar">
+				<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-x-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+  				<path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.354 4.646a.5.5 0 1 0-.708.708L7.293 8l-2.647 2.646a.5.5 0 0 0 .708.708L8 8.707l2.646 2.647a.5.5 0 0 0 .708-.708L8.707 8l2.647-2.646a.5.5 0 0 0-.708-.708L8 7.293 5.354 4.646z"/>
+				</svg>
+				</a>
+				<input type="hidden" name="id" id="id" th:value="${p.id}"/>
+				</td>
 			</tr>
 		</tbody>
 	</table>
-
 <!--MODAL MODIFICAR-->
 <div class="modal fade" id="modificarModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -86,28 +83,37 @@
         </button>
       </div>
       <div class="modal-body">
-        <form>
+        <form th:action="@{/modificar/} + ${id}" method="get">
           <div class="form-group">
             <label for="recipient-name" class="col-form-label">Nombre:</label>
-            <input type="text" class="form-control" id="recipient-name">
+            <input type="text" class="form-control" id="nombre" name="nombre">
           </div>
           <div class="form-group">
             <label for="message-text" class="col-form-label">Paterno:</label>
-            <textarea class="form-control" id="message-text"></textarea>
+             <input type="text" class="form-control" id="paterno" name="paterno">
           </div>
            <div class="form-group">
             <label for="recipient-name" class="col-form-label">Materno:</label>
-            <input type="text" class="form-control" id="recipient-name">
+             <input type="text" class="form-control" id="materno" name="materno">
           </div>
           <div class="form-group">
             <label for="message-text" class="col-form-label">E-Mail:</label>
-            <textarea class="form-control" id="message-text"></textarea>
+             <input type="text" class="form-control" id="correo" name="correo">
+          </div>
+           <div class="form-group">
+            <label for="message-text" class="col-form-label">Cedula:</label>
+             <input type="text" class="form-control" id="cedula" name="cedula">
+          </div>
+           <div class="form-group">
+            <label for="message-text" class="col-form-label">Matricula:</label>
+             <input type="text" class="form-control" id="matricula" name="matricula">
           </div>
         </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
         <button type="button" class="btn btn-primary">Guardar</button>
+        <input type="hidden" name="id" id="id">
       </div>
     </div>
   </div>
@@ -117,19 +123,22 @@
 <div class="modal fade" id="modalEliminar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
+    <form th:action="@{/eliminarPersona/} + ${id}" method="post">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">Eliminar</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
-       Esta seguro que quiere Eliminar a este Usuario
+      <div class="modal-body" >
+       		<label>[[#{mensaje.eliminar}]]</label>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-        <button type="button" class="btn btn-primary">Aceptar</button>
+        <button type="submit" class="btn btn-primary">Aceptar</button>
+        <input type="hidden" name="id" id="id">
       </div>
+     </form>
     </div>
   </div>
 </div>
@@ -137,5 +146,50 @@
 <script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
 <script type="text/javascript" src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	$('table .btn').on('click', function(){
+		var  id = $(this).parent().find('#id').val();
+		$('#modalEliminar #id').val(id);
+	})
+	
+	$('table .btn').on('click', function(){
+		var  id = $(this).parent().find('#id').val();
+		$.ajax({
+			type: 'GET',
+			url: "modificar/" + id,
+			data: {action: ''},
+			success: function(resul){
+				$('#modificarModal #id').val(id);
+			}
+		})
+		$('#modificarModal #id').val(result.id);
+	})
+});
+</script>
+
+
+<script type="text/javascript">
+ $("#tipoEquipo").on("change", function (e) {
+		var tipo =  $("#tipoEquipo option:selected").val(); 
+		$.ajax({
+			type: "GET",
+			url: "activarSeries/" + tipo,
+			success: function(result){
+				var result = JSON.parse(result);
+				var s = '<option value="' + "-1" + '">' + "--SELECCIONAR--" + '</option>';
+				for(var i = 0; i <result.length; i++){
+					s += '<option value="' + result[i].id + '">' + result[i].serie + '</option>'
+				}
+				$("#numSerie").html(s);
+				var a = '<option value="' + "-1" + '">' + "--SELECCIONAR--" + '</option>';
+			}
+		})
+	});
+ 
+
+
+ </script>
+
 </body>
 </html>
